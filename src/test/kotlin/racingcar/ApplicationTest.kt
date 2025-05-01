@@ -23,6 +23,22 @@ class ApplicationTest : NsTest() {
     fun `이름에 대한 예외 처리`() {
         assertSimpleTest {
             assertThrows<IllegalArgumentException> { runException("pobi,javaji", "1") }
+            assertThrows<IllegalArgumentException> { runException("pobi,", "1") }
+            assertThrows<IllegalArgumentException> { runException("", "1") }
+        }
+    }
+
+    @Test
+    fun `자동차 개수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi", "1") }
+        }
+    }
+
+    @Test
+    fun `시도 횟수에 대한 예외 처리`() {
+        assertSimpleTest {
+            assertThrows<IllegalArgumentException> { runException("pobi", "0") }
         }
     }
 
